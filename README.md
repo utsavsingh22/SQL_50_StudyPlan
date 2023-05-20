@@ -9,3 +9,6 @@ Q.2 [Find-customer-referee](https://leetcode.com/problems/find-customer-referee/
 Solution:-SELECT name FROM Customer WHERE referee_id!=2 or referee_id is null;
 SELECT name FROM Customer WHERE coalesce(referee_id,'')!=2
 
+Q.3 [Big-countries](https://leetcode.com/problems/big-countries/?envType=study-plan-v2&id=top-sql-50)
+
+Solution:-SELECT name,population,area FROM World WHERE area>=3000000 or population>=25000000
