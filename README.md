@@ -24,3 +24,8 @@ Q.5 [Invalid-tweets](https://leetcode.com/problems/invalid-tweets/?envType=study
 
 Solution:-SELECT tweet_id FROM Tweets 
 WHERE length(content) > 15;
+
+Q.6 [Replace-employee-id-with-the-unique-identifier](https://leetcode.com/problems/replace-employee-id-with-the-unique-identifier/?envType=study-plan-v2&id=top-sql-50)
+
+Solution:-SELECT U.unique_id,E.name FROM Employees E LEFT JOIN EmployeeUNI U
+ON U.id=E.id
