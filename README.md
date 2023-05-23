@@ -29,3 +29,8 @@ Q.6 [Replace-employee-id-with-the-unique-identifier](https://leetcode.com/proble
 
 Solution:-SELECT U.unique_id,E.name FROM Employees E LEFT JOIN EmployeeUNI U
 ON U.id=E.id
+
+Q.7 [Product-sales-analysis](https://leetcode.com/problems/product-sales-analysis-i/?envType=study-plan-v2&id=top-sql-50)
+
+Solution:-SELECT product_name,year,price FROM Sales S JOIN Product P
+ON S.product_id=P.product_id
