@@ -34,3 +34,9 @@ Q.7 [Product-sales-analysis](https://leetcode.com/problems/product-sales-analysi
 
 Solution:-SELECT product_name,year,price FROM Sales S JOIN Product P
 ON S.product_id=P.product_id
+
+Q.8 [Customer-who-visited-but-did-not-make-any-transactions](https://leetcode.com/problems/customer-who-visited-but-did-not-make-any-transactions/?envType=study-plan-v2&id=top-sql-50)
+
+Solution:-SELECT v.customer_id,count(v.visit_id) AS count_no_trans
+FROM Visits v WHERE v.visit_id not in (SELECT t.visit_id FROM Transactions t) 
+GROUP BY v.customer_id
