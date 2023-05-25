@@ -40,3 +40,9 @@ Q.8 [Customer-who-visited-but-did-not-make-any-transactions](https://leetcode.co
 Solution:-SELECT v.customer_id,count(v.visit_id) AS count_no_trans
 FROM Visits v WHERE v.visit_id not in (SELECT t.visit_id FROM Transactions t) 
 GROUP BY v.customer_id
+
+Q.9 [Rising-temperature](https://leetcode.com/problems/rising-temperature/?envType=study-plan-v2&id=top-sql-50)
+
+Solution:-SELECT w1.id 
+FROM Weather as w1, Weather as w2
+WHERE datediff(w1.recordDate,w2.recordDate)=1 and w1.Temperature>w2.Temperature
