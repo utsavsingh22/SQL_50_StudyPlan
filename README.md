@@ -46,3 +46,11 @@ Q.9 [Rising-temperature](https://leetcode.com/problems/rising-temperature/?envTy
 Solution:-SELECT w1.id 
 FROM Weather as w1, Weather as w2
 WHERE datediff(w1.recordDate,w2.recordDate)=1 and w1.Temperature>w2.Temperature
+
+Q.10 [Average-time-of-process-per-machine](https://leetcode.com/problems/average-time-of-process-per-machine/?envType=study-plan-v2&id=top-sql-50)
+
+Solution:-SELECT machine_id,
+ROUND((SUM(CASE WHEN ACTIVITY_TYPE="end" THEN timestamp END)-
+SUM(CASE WHEN ACTIVITY_TYPE="start" THEN timestamp END))/COUNT(CASE WHEN ACTIVITY_TYPE="start" THEN 1 END),3) as processing_time
+FROM Activity
+GROUP BY machine_id  
