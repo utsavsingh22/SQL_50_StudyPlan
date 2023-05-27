@@ -54,3 +54,13 @@ ROUND((SUM(CASE WHEN ACTIVITY_TYPE="end" THEN timestamp END)-
 SUM(CASE WHEN ACTIVITY_TYPE="start" THEN timestamp END))/COUNT(CASE WHEN ACTIVITY_TYPE="start" THEN 1 END),3) as processing_time
 FROM Activity
 GROUP BY machine_id  
+
+Q.11 [Employee-bonus](https://leetcode.com/problems/employee-bonus/?envType=study-plan-v2&id=top-sql-50)
+
+Solution:-SELECT E.name,B.bonus FROM Employee E LEFT JOIN Bonus B
+ON E.empId=B.empId WHERE B.bonus < 1000 OR B.bonus is null;
+Another Approach:-SELECT e.name, b.bonus from
+    Employee e left join bonus b 
+        USING(empId)
+    where 
+        ifnull(b.bonus, 0) <1000;
