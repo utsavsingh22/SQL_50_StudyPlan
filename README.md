@@ -64,3 +64,11 @@ Another Approach:-SELECT e.name, b.bonus from
         USING(empId)
     where 
         ifnull(b.bonus, 0) <1000;
+
+Q.12 [Students & Examination](https://leetcode.com/problems/students-and-examinations/?envType=study-plan-v2&id=top-sql-50)
+
+Solution:-SELECT s.student_id,s.student_name,sb.subject_name,count(e.subject_name) AS attended_exams FROM Students s CROSS JOIN Subjects sb LEFT JOIN Examinations e
+ON s.student_id=e.student_id AND sb.subject_name=e.subject_name
+GROUP BY s.student_id,s.student_name,sb.subject_name
+ORDER BY S.student_id,sb.subject_name
+--Cross join tb krte ager dusre table me foreign key nhi mil raha ar self joi tb krte jb sirf ek table hain ar usme same data me comparison krna ho AND count ar group by tb lete jb distinct data ho wo count me lete ar jisme chahiye usko groupby me lete.
