@@ -71,4 +71,5 @@ Solution:-SELECT s.student_id,s.student_name,sb.subject_name,count(e.subject_nam
 ON s.student_id=e.student_id AND sb.subject_name=e.subject_name
 GROUP BY s.student_id,s.student_name,sb.subject_name
 ORDER BY S.student_id,sb.subject_name
---Cross join tb krte ager dusre table me foreign key nhi mil raha ar self joi tb krte jb sirf ek table hain ar usme same data me comparison krna ho AND count ar group by tb lete jb distinct data ho wo count me lete ar jisme chahiye usko groupby me lete.
+
+### [Note]--Cross join tb krte ager dusre table me foreign key nhi mil raha ar self joi tb krte jb sirf ek table hain ar usme same data me comparison krna ho AND count ar group by tb lete jb distinct data ho wo count me lete ar jisme chahiye usko groupby me lete.
