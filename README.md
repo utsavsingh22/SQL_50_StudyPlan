@@ -73,3 +73,8 @@ GROUP BY s.student_id,s.student_name,sb.subject_name
 ORDER BY S.student_id,sb.subject_name
 
 ### [Note]--Cross join tb krte ager dusre table me foreign key nhi mil raha ar self joi tb krte jb sirf ek table hain ar usme same data me comparison krna ho AND count ar group by tb lete jb distinct data ho wo count me lete ar jisme chahiye usko groupby me lete.
+
+Q.13 [Managers-with-at-least-5-direct-reports](https://leetcode.com/problems/managers-with-at-least-5-direct-reports/?envType=study-plan-v2&id=top-sql-50)
+
+Solution:-SELECT name FROM Employee WHERE id IN
+(SELECT managerId FROM EMPLOYEE GROUP BY managerId HAVING count(*)>=5)
