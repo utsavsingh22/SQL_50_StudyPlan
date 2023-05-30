@@ -78,3 +78,10 @@ Q.13 [Managers-with-at-least-5-direct-reports](https://leetcode.com/problems/man
 
 Solution:-SELECT name FROM Employee WHERE id IN
 (SELECT managerId FROM EMPLOYEE GROUP BY managerId HAVING count(*)>=5)
+
+Q.14 [Confirmation-rate](https://leetcode.com/problems/confirmation-rate/?envType=study-plan-v2&id=top-sql-50)
+
+Solution:-SELECT S.user_id,ROUND(AVG(case when action='confirmed' THEN 1 ELSE 0 END),2) AS confirmation_rate 
+FROM Signups S
+LEFT JOIN Confirmations C ON S.user_id=C.user_id
+GROUP BY S.user_id;
