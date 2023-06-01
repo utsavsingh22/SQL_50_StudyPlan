@@ -85,3 +85,9 @@ Solution:-SELECT S.user_id,ROUND(AVG(case when action='confirmed' THEN 1 ELSE 0 
 FROM Signups S
 LEFT JOIN Confirmations C ON S.user_id=C.user_id
 GROUP BY S.user_id;
+
+Q.15 [Not-boring-movies](https://leetcode.com/problems/not-boring-movies/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-SELECT id,movie,description,rating FROM Cinema 
+WHERE id%2!=0 And description!='boring'    
+ORDER BY rating DESC;
