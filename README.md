@@ -91,3 +91,10 @@ Q.15 [Not-boring-movies](https://leetcode.com/problems/not-boring-movies/?envTyp
 Solution:-SELECT id,movie,description,rating FROM Cinema 
 WHERE id%2!=0 And description!='boring'    
 ORDER BY rating DESC;
+
+Q.16 [Average Selling Price](https://leetcode.com/problems/average-selling-price/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-SELECT P.product_id,Round(SUM(U.units*P.price)/SUM(U.units),2) AS average_price FROM Prices P JOIN UnitsSold U
+ON P.product_id=U.product_id
+WHERE u.purchase_date between p.start_date AND p.end_date
+GROUP BY P.product_id
