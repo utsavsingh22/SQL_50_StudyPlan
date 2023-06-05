@@ -98,3 +98,8 @@ Solution:-SELECT P.product_id,Round(SUM(U.units*P.price)/SUM(U.units),2) AS aver
 ON P.product_id=U.product_id
 WHERE u.purchase_date between p.start_date AND p.end_date
 GROUP BY P.product_id
+
+Q.17 [Project Employees](https://leetcode.com/problems/project-employees-i/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-SELECT P.project_id,ROUND(AVG(E.experience_years),2) AS average_years FROM Project P LEFT JOIN Employee E ON P.employee_id=E.employee_id
+GROUP BY P.project_id
