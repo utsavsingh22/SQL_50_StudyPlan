@@ -103,3 +103,10 @@ Q.17 [Project Employees](https://leetcode.com/problems/project-employees-i/?envT
 
 Solution:-SELECT P.project_id,ROUND(AVG(E.experience_years),2) AS average_years FROM Project P LEFT JOIN Employee E ON P.employee_id=E.employee_id
 GROUP BY P.project_id
+
+Q.18 [Percentage-of-users-attended-a-contest](https://leetcode.com/problems/percentage-of-users-attended-a-contest/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-Select r.contest_id, round((count(distinct(r.user_id))*100/count(distinct(u.user_id))),2) as percentage
+from users u, register r
+group by r.contest_id
+order by percentage desc,r.contest_id
