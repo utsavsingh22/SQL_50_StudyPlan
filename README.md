@@ -110,3 +110,9 @@ Solution:-Select r.contest_id, round((count(distinct(r.user_id))*100/count(disti
 from users u, register r
 group by r.contest_id
 order by percentage desc,r.contest_id
+
+Q.19 [Queries-quality-and-percentage](https://leetcode.com/problems/queries-quality-and-percentage/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-SELECT query_name,ROUND(AVG(rating/position),2) AS quality,ROUND(100*SUM(CASE WHEN rating < 3 THEN 1 ELSE 0 END)/COUNT(*),2) 
+AS poor_query_percentage FROM Queries 
+GROUP BY query_name
