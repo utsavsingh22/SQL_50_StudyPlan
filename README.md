@@ -116,3 +116,10 @@ Q.19 [Queries-quality-and-percentage](https://leetcode.com/problems/queries-qual
 Solution:-SELECT query_name,ROUND(AVG(rating/position),2) AS quality,ROUND(100*SUM(CASE WHEN rating < 3 THEN 1 ELSE 0 END)/COUNT(*),2) 
 AS poor_query_percentage FROM Queries 
 GROUP BY query_name
+
+Q.20 [Monthly-transactions](https://leetcode.com/problems/monthly-transactions-i/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-SELECT DATE_FORMAT(trans_date, '%Y-%m') AS month,country,
+COUNT(*) AS trans_count,SUM(IF(state='approved', 1,0)) AS approved_count,SUM(amount) AS trans_total_amount ,SUM(IF(state='approved', amount,0)) AS approved_total_amount 
+FROM Transactions 
+GROUP BY month,country
