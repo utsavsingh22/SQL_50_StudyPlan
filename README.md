@@ -124,3 +124,11 @@ COUNT(*) AS trans_count,SUM(IF(state='approved', 1,0)) AS approved_count,SUM(amo
 FROM Transactions 
 GROUP BY month,country
 Note:-DATE_FORMAT(trans_date, '%Y-%m') -- for date format queries
+
+Q.21 [Immediate-food-delivery](https://leetcode.com/problems/immediate-food-delivery-ii/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-select round(sum(if(order_date = customer_pref_delivery_date, 1, 0)) / count(*) * 100, 2) as immediate_percentage from Delivery
+where (customer_id, order_date) in
+(
+    Select customer_id, min(order_date) from Delivery group by customer_id
+)
