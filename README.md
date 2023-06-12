@@ -132,3 +132,11 @@ where (customer_id, order_date) in
 (
     Select customer_id, min(order_date) from Delivery group by customer_id
 )
+
+Q.22 [Game Play Analysis IV](https://leetcode.com/problems/game-play-analysis-iv/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-SELECT round(sum(case when temp.min_date + 1 = a.event_date then 1 else 0 end)
+/count(distinct temp.player_id),2) as fraction FROM
+(SELECT player_id, min(event_date) as min_date FROM Activity GROUP BY player_id) as temp
+join activity a
+on temp.player_id=a.player_id
