@@ -159,7 +159,12 @@ GROUP BY activity_date
 
 Q.25 [Product Sales Analysis](https://leetcode.com/problems/product-sales-analysis-iii/?envType=study-plan-v2&envId=top-sql-50)
 
-Solution:-SELECT S.product_id,min(S.year) as first_year,S.quantity,S.price
+Solution:-SELECT product_id,year as first_year,quantity,price FROM Sales WHERE (product_id,year) in
+(Select product_id,min(year)
+from sales 
+group by product_id)
+Brute Force:-
+SELECT S.product_id,min(S.year) as first_year,S.quantity,S.price
 FROM Sales S LEFT JOIN Product P
 ON S.product_id=P.product_id
 GROUP BY product_id
