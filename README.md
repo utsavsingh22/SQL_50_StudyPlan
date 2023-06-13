@@ -168,3 +168,9 @@ SELECT S.product_id,min(S.year) as first_year,S.quantity,S.price
 FROM Sales S LEFT JOIN Product P
 ON S.product_id=P.product_id
 GROUP BY product_id
+
+Q.26 [Classes-more-than-5-students](https://leetcode.com/problems/classes-more-than-5-students/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-SELECT class FROM Courses
+GROUP BY class
+HAVING COUNT(class)>=5
