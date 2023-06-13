@@ -1,5 +1,6 @@
 # SQL_50_StudyPlan
 
+## SELECT
 Q.1 [Recyclable-and-low-fat-products](https://leetcode.com/problems/recyclable-and-low-fat-products/?envType=study-plan-v2&id=top-sql-50)
 
 Solution:-SELECT product_id FROM Products where low_fats='Y' and recyclable='Y'
@@ -25,6 +26,7 @@ Q.5 [Invalid-tweets](https://leetcode.com/problems/invalid-tweets/?envType=study
 Solution:-SELECT tweet_id FROM Tweets 
 WHERE length(content) > 15;
 
+## BASIC JOINS
 Q.6 [Replace-employee-id-with-the-unique-identifier](https://leetcode.com/problems/replace-employee-id-with-the-unique-identifier/?envType=study-plan-v2&id=top-sql-50)
 
 Solution:-SELECT U.unique_id,E.name FROM Employees E LEFT JOIN EmployeeUNI U
@@ -86,8 +88,7 @@ FROM Signups S
 LEFT JOIN Confirmations C ON S.user_id=C.user_id
 GROUP BY S.user_id;
 
-# Basic Aggregate Function
-
+## Basic Aggregate Function
 Q.15 [Not-boring-movies](https://leetcode.com/problems/not-boring-movies/?envType=study-plan-v2&envId=top-sql-50)
 
 Solution:-SELECT id,movie,description,rating FROM Cinema 
@@ -143,7 +144,7 @@ from activity a1 join (select player_id, min(event_date) as event_date
 from activity group by 1) a2
 on a1.player_id = a2.player_id and datediff(a1.event_date,a2.event_date) = 1;
 
-# Sorting & Grouping
+## Sorting & Grouping
 Q.23 [Number-of-unique-subjects-taught-by-each-teacher](https://leetcode.com/problems/number-of-unique-subjects-taught-by-each-teacher/?envType=study-plan-v2&envId=top-sql-50)
 
 Solution:-SELECT teacher_id,COUNT(distinct subject_id) AS cnt FROM Teacher
