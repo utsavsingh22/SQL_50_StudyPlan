@@ -156,3 +156,10 @@ Solution:-SELECT activity_date AS day,COUNT(distinct user_id) AS active_users
 FROM Activity WHERE DATEDIFF('2019-07-27',activity_date)<30
 AND activity_date<'2019-07-27'
 GROUP BY activity_date
+
+Q.25 [Product Sales Analysis](https://leetcode.com/problems/product-sales-analysis-iii/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-SELECT S.product_id,min(S.year) as first_year,S.quantity,S.price
+FROM Sales S LEFT JOIN Product P
+ON S.product_id=P.product_id
+GROUP BY product_id
