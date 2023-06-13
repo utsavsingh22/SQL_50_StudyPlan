@@ -86,6 +86,8 @@ FROM Signups S
 LEFT JOIN Confirmations C ON S.user_id=C.user_id
 GROUP BY S.user_id;
 
+# Basic Aggregate Function
+
 Q.15 [Not-boring-movies](https://leetcode.com/problems/not-boring-movies/?envType=study-plan-v2&envId=top-sql-50)
 
 Solution:-SELECT id,movie,description,rating FROM Cinema 
@@ -140,3 +142,9 @@ from activity),2) as fraction
 from activity a1 join (select player_id, min(event_date) as event_date 
 from activity group by 1) a2
 on a1.player_id = a2.player_id and datediff(a1.event_date,a2.event_date) = 1;
+
+# Sorting & Grouping
+Q.23 [Number-of-unique-subjects-taught-by-each-teacher](https://leetcode.com/problems/number-of-unique-subjects-taught-by-each-teacher/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-SELECT teacher_id,COUNT(distinct subject_id) AS cnt FROM Teacher
+GROUP BY teacher_id
