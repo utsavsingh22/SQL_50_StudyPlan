@@ -174,3 +174,8 @@ Q.26 [Classes-more-than-5-students](https://leetcode.com/problems/classes-more-t
 Solution:-SELECT class FROM Courses
 GROUP BY class
 HAVING COUNT(class)>=5
+
+Q.27 [Biggest-single-number](https://leetcode.com/problems/biggest-single-number/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-SELECT MAX(num) as num FROM MyNumbers WHERE num IN (SELECT num FROM MyNumbers GROUP BY num
+HAVING COUNT(*)=1)
