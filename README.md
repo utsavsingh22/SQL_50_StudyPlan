@@ -179,3 +179,9 @@ Q.27 [Biggest-single-number](https://leetcode.com/problems/biggest-single-number
 
 Solution:-SELECT MAX(num) as num FROM MyNumbers WHERE num IN (SELECT num FROM MyNumbers GROUP BY num
 HAVING COUNT(*)=1)
+
+Q.28 [Customers-who-bought-all-products](https://leetcode.com/problems/customers-who-bought-all-products/description/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-select customer_id from customer
+group by customer_id
+having count(distinct product_key)=(select count(distinct product_key) from product)
