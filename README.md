@@ -55,7 +55,11 @@ Solution:-SELECT machine_id,
 ROUND((SUM(CASE WHEN ACTIVITY_TYPE="end" THEN timestamp END)-
 SUM(CASE WHEN ACTIVITY_TYPE="start" THEN timestamp END))/COUNT(CASE WHEN ACTIVITY_TYPE="start" THEN 1 END),3) as processing_time
 FROM Activity
-GROUP BY machine_id  
+GROUP BY machine_id ;
+ANOTHER APPROACH:-SELECT a.machine_id,ROUND(AVG(b.timestamp-a.timestamp),3) AS processing_time 
+FROM Activity a JOIN Activity b
+ON a.machine_id =b.machine_id AND a.process_id=b.process_id AND a.activity_type='start' AND b.activity_type='end'
+GROUP BY a.machine_id
 
 Q.11 [Employee-bonus](https://leetcode.com/problems/employee-bonus/?envType=study-plan-v2&id=top-sql-50)
 
