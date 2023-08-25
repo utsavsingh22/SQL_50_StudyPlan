@@ -189,3 +189,16 @@ Q.28 [Customers-who-bought-all-products](https://leetcode.com/problems/customers
 Solution:-select customer_id from customer
 group by customer_id
 having count(distinct product_key)=(select count(distinct product_key) from product)
+
+Q.29 [Number-of-employees-which-report-to-each-employee](https://leetcode.com/problems/the-number-of-employees-which-report-to-each-employee/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-SELECT E.employee_id,E.name,COUNT(M.reports_to) AS reports_count,
+ROUND(AVG(M.AGE),0) AS average_age
+FROM Employees E JOIN Employees M
+ON E.employee_id=M.reports_to
+GROUP BY E.employee_id,E.name
+ORDER BY E.employee_id
+
+Q.30 [Primary-department-for-each-employee](https://leetcode.com/problems/primary-department-for-each-employee/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-
