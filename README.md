@@ -201,4 +201,13 @@ ORDER BY E.employee_id
 
 Q.30 [Primary-department-for-each-employee](https://leetcode.com/problems/primary-department-for-each-employee/?envType=study-plan-v2&envId=top-sql-50)
 
+Solution:-SELECT employee_id,department_id FROM Employee WHERE primary_flag='Y'
+UNION ALL
+SELECT employee_id,department_id FROM Employee GROUP BY employee_id HAVING COUNT(department_id)=1
+APPROACH2:-SELECT employee_id,department_id FROM Employee WHERE primary_flag='Y'
+OR (employee_id,department_id) IN (SELECT employee_id,department_id FROM Employee
+GROUP BY employee_id HAVING COUNT(department_id)=1)
+
+Q.31 [Triangle-judgement](https://leetcode.com/problems/triangle-judgement/?envType=study-plan-v2&envId=top-sql-50)
+
 Solution:-
