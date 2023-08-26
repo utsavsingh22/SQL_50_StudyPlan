@@ -210,4 +210,6 @@ GROUP BY employee_id HAVING COUNT(department_id)=1)
 
 Q.31 [Triangle-judgement](https://leetcode.com/problems/triangle-judgement/?envType=study-plan-v2&envId=top-sql-50)
 
-Solution:-
+Solution:-SELECT x,y,z,CASE WHEN (x+y>z and x+z>y and y+z>x) THEN 'Yes' ELSE 'No'
+END AS triangle 
+FROM Triangle 
