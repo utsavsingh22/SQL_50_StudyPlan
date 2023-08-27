@@ -213,3 +213,9 @@ Q.31 [Triangle-judgement](https://leetcode.com/problems/triangle-judgement/?envT
 Solution:-SELECT x,y,z,CASE WHEN (x+y>z and x+z>y and y+z>x) THEN 'Yes' ELSE 'No'
 END AS triangle 
 FROM Triangle 
+
+Q.32 [Consecutive-numbers](https://leetcode.com/problems/consecutive-numbers/description/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-select distinct l1.num AS ConsecutiveNums from logs l1,logs l2,logs l3
+where l1.id = l2.id+1 and l2.Id=l3.Id+1
+and l1.Num=l2.Num and l2.Num=l3.Num
