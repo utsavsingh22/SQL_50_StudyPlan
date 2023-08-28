@@ -222,9 +222,11 @@ and l1.Num=l2.Num and l2.Num=l3.Num
 
 Q.33 [Product-price-at-a-given-date](https://leetcode.com/problems/product-price-at-a-given-date/?envType=study-plan-v2&envId=top-sql-50)
 
-Solution:-select distinct a.product_id, coalesce(b.new_price, 10) as price from Products as a
-left join
-(select product_id, rank() over(partition by product_id order by change_date DESC) as xrank, new_price from Products
-where change_date<='2019-08-16') as b
-on a.product_id=b.product_id and b.xrank=1
-order by 2 DESC;
+Solution:-SELECT distinct a.product_id,coalesce(b.new_price,10) AS price FROM Products a
+LEFT JOIN
+(
+SELECT product_id,rank() over(partition by product_id ORDER BY change_date desc)
+AS rank,new_price FROM Products WHERE change_date <='2019-08-16'
+) AS B
+ON a.product_id=b.product_id AND b.rank=1
+ORDER BY price desc;
