@@ -219,3 +219,12 @@ Q.32 [Consecutive-numbers](https://leetcode.com/problems/consecutive-numbers/des
 Solution:-select distinct l1.num AS ConsecutiveNums from logs l1,logs l2,logs l3
 where l1.id = l2.id+1 and l2.Id=l3.Id+1
 and l1.Num=l2.Num and l2.Num=l3.Num
+
+Q.33 [Product-price-at-a-given-date](https://leetcode.com/problems/product-price-at-a-given-date/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-select distinct a.product_id, coalesce(b.new_price, 10) as price from Products as a
+left join
+(select product_id, rank() over(partition by product_id order by change_date DESC) as xrank, new_price from Products
+where change_date<='2019-08-16') as b
+on a.product_id=b.product_id and b.xrank=1
+order by 2 DESC;
