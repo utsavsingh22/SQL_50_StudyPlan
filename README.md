@@ -230,3 +230,11 @@ AS rank,new_price FROM Products WHERE change_date <='2019-08-16'
 ) AS B
 ON a.product_id=b.product_id AND b.rank=1
 ORDER BY price desc;
+
+Q.34 [Last-person-to-fit-in-the-bus](https://leetcode.com/problems/last-person-to-fit-in-the-bus/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-SELECT person_name FROM
+(SELECT person_name,turn,
+sum(weight) OVER(ORDER BY turn) AS rnk FROM Queue) a
+WHERE rnk<=1000
+ORDER BY turn desc limit 1
