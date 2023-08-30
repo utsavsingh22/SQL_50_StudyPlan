@@ -179,18 +179,27 @@ Solution:-SELECT class FROM Courses
 GROUP BY class
 HAVING COUNT(class)>=5
 
-Q.27 [Biggest-single-number](https://leetcode.com/problems/biggest-single-number/?envType=study-plan-v2&envId=top-sql-50)
+Q.27 [Followers Count](https://leetcode.com/problems/find-followers-count/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-SELECT user_id,count(follower_id) AS followers_count
+FROM Followers 
+GROUP BY user_id
+ORDER BY user_id
+
+Q.28 [Biggest-single-number](https://leetcode.com/problems/biggest-single-number/?envType=study-plan-v2&envId=top-sql-50)
 
 Solution:-SELECT MAX(num) as num FROM MyNumbers WHERE num IN (SELECT num FROM MyNumbers GROUP BY num
 HAVING COUNT(*)=1)
 
-Q.28 [Customers-who-bought-all-products](https://leetcode.com/problems/customers-who-bought-all-products/description/?envType=study-plan-v2&envId=top-sql-50)
+Q.29 [Customers-who-bought-all-products](https://leetcode.com/problems/customers-who-bought-all-products/description/?envType=study-plan-v2&envId=top-sql-50)
 
 Solution:-select customer_id from customer
 group by customer_id
 having count(distinct product_key)=(select count(distinct product_key) from product)
 
-Q.29 [Number-of-employees-which-report-to-each-employee](https://leetcode.com/problems/the-number-of-employees-which-report-to-each-employee/?envType=study-plan-v2&envId=top-sql-50)
+## Advanced Select and Joins
+
+Q.30 [Number-of-employees-which-report-to-each-employee](https://leetcode.com/problems/the-number-of-employees-which-report-to-each-employee/?envType=study-plan-v2&envId=top-sql-50)
 
 Solution:-SELECT E.employee_id,E.name,COUNT(M.reports_to) AS reports_count,
 ROUND(AVG(M.AGE),0) AS average_age
@@ -199,7 +208,7 @@ ON E.employee_id=M.reports_to
 GROUP BY E.employee_id,E.name
 ORDER BY E.employee_id
 
-Q.30 [Primary-department-for-each-employee](https://leetcode.com/problems/primary-department-for-each-employee/?envType=study-plan-v2&envId=top-sql-50)
+Q.31 [Primary-department-for-each-employee](https://leetcode.com/problems/primary-department-for-each-employee/?envType=study-plan-v2&envId=top-sql-50)
 
 Solution:-SELECT employee_id,department_id FROM Employee WHERE primary_flag='Y'
 UNION ALL
@@ -208,19 +217,19 @@ APPROACH2:-SELECT employee_id,department_id FROM Employee WHERE primary_flag='Y'
 OR (employee_id,department_id) IN (SELECT employee_id,department_id FROM Employee
 GROUP BY employee_id HAVING COUNT(department_id)=1)
 
-Q.31 [Triangle-judgement](https://leetcode.com/problems/triangle-judgement/?envType=study-plan-v2&envId=top-sql-50)
+Q.32 [Triangle-judgement](https://leetcode.com/problems/triangle-judgement/?envType=study-plan-v2&envId=top-sql-50)
 
 Solution:-SELECT x,y,z,CASE WHEN (x+y>z and x+z>y and y+z>x) THEN 'Yes' ELSE 'No'
 END AS triangle 
 FROM Triangle 
 
-Q.32 [Consecutive-numbers](https://leetcode.com/problems/consecutive-numbers/description/?envType=study-plan-v2&envId=top-sql-50)
+Q.33 [Consecutive-numbers](https://leetcode.com/problems/consecutive-numbers/description/?envType=study-plan-v2&envId=top-sql-50)
 
 Solution:-select distinct l1.num AS ConsecutiveNums from logs l1,logs l2,logs l3
 where l1.id = l2.id+1 and l2.Id=l3.Id+1
 and l1.Num=l2.Num and l2.Num=l3.Num
 
-Q.33 [Product-price-at-a-given-date](https://leetcode.com/problems/product-price-at-a-given-date/?envType=study-plan-v2&envId=top-sql-50)
+Q.34 [Product-price-at-a-given-date](https://leetcode.com/problems/product-price-at-a-given-date/?envType=study-plan-v2&envId=top-sql-50)
 
 Solution:-SELECT distinct a.product_id,coalesce(b.new_price,10) AS price FROM Products a
 LEFT JOIN
@@ -231,10 +240,24 @@ AS rank,new_price FROM Products WHERE change_date <='2019-08-16'
 ON a.product_id=b.product_id AND b.rank=1
 ORDER BY price desc;
 
-Q.34 [Last-person-to-fit-in-the-bus](https://leetcode.com/problems/last-person-to-fit-in-the-bus/?envType=study-plan-v2&envId=top-sql-50)
+Q.35 [Last-person-to-fit-in-the-bus](https://leetcode.com/problems/last-person-to-fit-in-the-bus/?envType=study-plan-v2&envId=top-sql-50)
 
 Solution:-SELECT person_name FROM
 (SELECT person_name,turn,
 sum(weight) OVER(ORDER BY turn) AS rnk FROM Queue) a
 WHERE rnk<=1000
 ORDER BY turn desc limit 1
+
+Q.36 [Count-salary-categorie](https://leetcode.com/problems/count-salary-categories/description/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-SELECT "High Salary" AS category,COUNT(*) AS accounts_count FROM Accounts WHERE income > 50000
+UNION ALL
+SELECT "Low Salary" AS category,COUNT(*) AS accounts_count FROM Accounts WHERE income < 20000
+UNION ALL
+SELECT "Average Salary" AS category,COUNT(*) AS accounts_count FROM Accounts WHERE income BETWEEN 20000 AND 50000;
+
+## Subqueries
+
+Q.37 []()
+
+Solution:-
