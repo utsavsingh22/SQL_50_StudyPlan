@@ -258,6 +258,8 @@ SELECT "Average Salary" AS category,COUNT(*) AS accounts_count FROM Accounts WHE
 
 ## Subqueries
 
-Q.37 []()
+Q.37 [Employees-whose-manager-left-the-company](https://leetcode.com/problems/employees-whose-manager-left-the-company/description/?envType=study-plan-v2&envId=top-sql-50)
 
-Solution:-
+Solution:-SELECT employee_id FROM Employees WHERE salary < 30000 AND manager_id NOT IN
+(SELECT employee_id FROM Employees) 
+ORDER BY employee_id
