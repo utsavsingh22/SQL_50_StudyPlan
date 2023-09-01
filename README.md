@@ -256,12 +256,6 @@ SELECT "Low Salary" AS category,COUNT(*) AS accounts_count FROM Accounts WHERE i
 UNION ALL
 SELECT "Average Salary" AS category,COUNT(*) AS accounts_count FROM Accounts WHERE income BETWEEN 20000 AND 50000;
 
-Q.37 [Exchange-seats](https://leetcode.com/problems/exchange-seats/?envType=study-plan-v2&envId=top-sql-50)
-
-Solution:-SELECT id,CASE WHEN id%2=0 THEN (lag(student) OVER (order by id))
-ELSE IFNULL(lead(student) OVER(ORDER BY id),student)
-END AS student
-FROM Seat
 ## Subqueries
 
 Q.37 [Employees-whose-manager-left-the-company](https://leetcode.com/problems/employees-whose-manager-left-the-company/description/?envType=study-plan-v2&envId=top-sql-50)
@@ -269,3 +263,10 @@ Q.37 [Employees-whose-manager-left-the-company](https://leetcode.com/problems/em
 Solution:-SELECT employee_id FROM Employees WHERE salary < 30000 AND manager_id NOT IN
 (SELECT employee_id FROM Employees) 
 ORDER BY employee_id
+
+Q.38 [Exchange-seats](https://leetcode.com/problems/exchange-seats/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-SELECT id,CASE WHEN id%2=0 THEN (lag(student) OVER (order by id))
+ELSE IFNULL(lead(student) OVER(ORDER BY id),student)
+END AS student
+FROM Seat
