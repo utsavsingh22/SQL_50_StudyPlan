@@ -274,3 +274,14 @@ FROM Seat
 Q.39 [Movie-rating](https://leetcode.com/problems/movie-rating/?envType=study-plan-v2&envId=top-sql-50)
 
 Solution:-(SELECT name AS "results" FROM Users U JOIN MovieRating MR ON U.user_id=MR.user_id GROUP BY name ORDER BY COUNT(rating) desc,name limit 1) UNION ALL (SELECT title AS "results" FROM Movies M JOIN MovieRating MR ON M.movie_id=MR.movie_id WHERE created_at between '2020-02-01' and '2020-02-29' GROUP BY title ORDER BY AVG(rating) desc,title limit 1)
+
+Q.40 [Restaurant-growth](https://leetcode.com/problems/restaurant-growth/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-SELECT visited_on, amount, ROUND(amount/7, 2) AS average_amount
+FROM (
+    SELECT DISTINCT visited_on, 
+    SUM(amount) OVER(ORDER BY visited_on RANGE BETWEEN INTERVAL 6 DAY   PRECEDING AND CURRENT ROW) amount, 
+    MIN(visited_on) OVER() 1st_date 
+    FROM Customer
+) t
+WHERE visited_on>= 1st_date+6;
