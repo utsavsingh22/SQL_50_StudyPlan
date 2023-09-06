@@ -285,3 +285,12 @@ FROM (
     FROM Customer
 ) t
 WHERE visited_on>= 1st_date+6;
+
+Q.41 [Friend-requests-ii-who-has-the-most-friends](https://leetcode.com/problems/friend-requests-ii-who-has-the-most-friends/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-WITH A AS (select requester_id as id from RequestAccepted
+union all
+select accepter_id as id from RequestAccepted)
+SELECT id,count(id) as num FROM A
+GROUP BY id
+ORDER BY num desc limit 1
