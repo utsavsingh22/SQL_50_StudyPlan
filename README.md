@@ -300,4 +300,14 @@ Q.42 [Investments-in-2016](https://leetcode.com/problems/investments-in-2016/?en
 Solution:-WITH A AS (
     SELECT pid,tiv_2015,tiv_2016, COUNT(CONCAT(lat,lon)) over (partition by CONCAT(lat,lon)) AS CNT1,COUNT(tiv_2015) over (partition by (tiv_2015)) AS CNT2 FROM Insurance 
 )
-SELECT SUM(tiv_2016) AS tiv_2016 FROM A WHERE CNT1=1 AND CNT2!=1
+SELECT ROUND(SUM(tiv_2016),2) AS tiv_2016 FROM A WHERE CNT1=1 AND CNT2!=1
+
+Q.43 [Department-top-three-salaries](https://leetcode.com/problems/department-top-three-salaries/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-SELECT D.Name as Department, E.Name as Employee, E.Salary 
+FROM Department D, Employee E, Employee E2  
+WHERE D.ID = E.DepartmentId and E.DepartmentId = E2.DepartmentId and 
+E.Salary <= E2.Salary
+group by D.ID,E.Name having count(distinct E2.Salary) <= 3
+order by D.Name, E.Salary desc
+
