@@ -294,3 +294,10 @@ select accepter_id as id from RequestAccepted)
 SELECT id,count(id) as num FROM A
 GROUP BY id
 ORDER BY num desc limit 1
+
+Q.42 [Investments-in-2016](https://leetcode.com/problems/investments-in-2016/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-WITH A AS (
+    SELECT pid,tiv_2015,tiv_2016, COUNT(CONCAT(lat,lon)) over (partition by CONCAT(lat,lon)) AS CNT1,COUNT(tiv_2015) over (partition by (tiv_2015)) AS CNT2 FROM Insurance 
+)
+SELECT SUM(tiv_2016) AS tiv_2016 FROM A WHERE CNT1=1 AND CNT2!=1
