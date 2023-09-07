@@ -316,5 +316,41 @@ order by D.Name, E.Salary desc
 Q.44 [Fix Names in a Table](https://leetcode.com/problems/fix-names-in-a-table/?envType=study-plan-v2&envId=top-sql-50)
 
 Solution:-SELECT user_id,CONCAT(UPPER(SUBSTRING(name,1,1)),LOWER(SUBSTRING(name,2))) AS name
-FROM Users 
-Solution:-
+FROM Users ORDER BY user_id
+
+Q.45 [Patients-with-a-condition](https://leetcode.com/problems/patients-with-a-condition/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-SELECT patient_id,patient_name,conditions FROM Patients 
+WHERE conditions LIKE '% DIAB1%' OR conditions LIKE 'DIAB1%'
+
+Q.46 [Delete-duplicate-emails](https://leetcode.com/problems/delete-duplicate-emails/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-delete p2
+from person p1,person p2
+where p1.email=p2.email and p2.id>p1.id;
+
+Q.47 [Second-highest-salary](https://leetcode.com/problems/second-highest-salary/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-Select max(salary) as SecondHighestSalary from Employee
+where salary< (Select max(salary) from Employee)
+
+Q.48 [Group-sold-products-by-the-date](https://leetcode.com/problems/group-sold-products-by-the-date/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-Select sell_date,count(distinct product) as num_sold,group_concat(distinct product)
+as products
+from Activities
+group by sell_date
+
+Q.49 [List-the-products-ordered-in-a-period](https://leetcode.com/problems/list-the-products-ordered-in-a-period/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-Select p.product_name,sum(o.unit) as unit from
+Products p join Orders o
+on p.product_id=o.product_id
+where MONTH(order_date)=2 and YEAR(order_date)=2020
+group by p.product_name
+Having unit>=100
+
+Q.50 [Find-users-with-valid-e-mails](https://leetcode.com/problems/find-users-with-valid-e-mails/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-SELECT * FROM Users 
+WHERE mail regexp '^[a-zA-Z][a-zA-Z0-9-._]*@leetcode[.]com'
