@@ -311,3 +311,10 @@ E.Salary <= E2.Salary
 group by D.ID,E.Name having count(distinct E2.Salary) <= 3
 order by D.Name, E.Salary desc
 
+## Advanced String Functions / Regex / Clause
+
+Q.44 [Fix Names in a Table](https://leetcode.com/problems/fix-names-in-a-table/?envType=study-plan-v2&envId=top-sql-50)
+
+Solution:-SELECT user_id,CONCAT(UPPER(SUBSTRING(name,1,1)),LOWER(SUBSTRING(name,2))) AS name
+FROM Users 
+Solution:-
